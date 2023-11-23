@@ -1,9 +1,9 @@
 {
-  "name": "utils",
+  "name": "@lu-jiejie/utils",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@8.10.5",
-  "description": "一些描述",
+  "description": "Javascript/Typescript工具库。",
   "author": "LU-JIEJIE",
   "license": "MIT",
   "homepage": "https://github.com/LU-JIEJIE/utils#readme",
