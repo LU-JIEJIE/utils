@@ -1,4 +1,5 @@
 import { randomInt } from './common'
+import { isFunction, isObject } from './is'
 
 /**
  * 生成随机字符串
@@ -40,4 +41,17 @@ export function truncateString(str: string, length: number, omission: string = '
   if (str.length <= length)
     return str
   return `${str.slice(0, length)}${omission}`
+}
+
+/**
+ * python like format
+ */
+export function format(str: string, ...args: (string | number)[]): string
+export function format(str: string, argObject: Record<string, any>, placeholder?: string | ((key: string) => any)): string
+export function format(str: string, ...args: any[]): string {
+  if (isObject(args[0])) {
+    const [argObject, placeholder] = args
+    return str.replace(/{([\w\d]+)}/g, (_, key) => (argObject as Record<string, any>)[key] || (isFunction(placeholder) ? placeholder(key) : placeholder) || `{${key}}`)
+  }
+  else { return str.replace(/{(\d+)}/g, (_, key) => Number.isNaN(Number(key)) ? `{${key}}` : args[Number(key)] || `{${key}}`) }
 }

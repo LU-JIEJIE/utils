@@ -41,7 +41,7 @@
     "lint": "eslint .",
     "lint:fix": "pnpm run lint --fix",
     "release": "bumpp && npm publish",
-    "start": "esno src/index.ts",
+    "start": "esno src/start.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
